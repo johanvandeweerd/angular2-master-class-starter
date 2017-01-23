@@ -7,10 +7,11 @@ export class ContactsService {
 
   contacts:Array<Contact> = CONTACT_DATA;
 
-  constructor() {
+  getContact(id:number):Contact {
+    return this.contacts.find(contact => contact.id === id);
   }
 
   getContacts():Array<Contact> {
-    return CONTACT_DATA;
+    return this.contacts;
   }
 }
