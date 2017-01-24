@@ -4,6 +4,10 @@ import "rxjs/add/operator/map";
 import {Observable} from "rxjs/Rx";
 import {Contact} from "./models/contact";
 import {API_ENDPOINT} from "./tokens";
+import "rxjs/add/operator/debounceTime";
+import "rxjs/add/operator/distinctUntilChanged";
+import "rxjs/add/operator/switchMap";
+import "rxjs/add/operator/merge";
 
 @Injectable()
 export class ContactsService {
@@ -27,9 +31,17 @@ export class ContactsService {
       .map(data => data.items);
   }
 
-  search(value: string): Observable<Array<Contact>> {
+  rawSearch(value: string): Observable<Array<Contact>> {
     return this.http.get(`${this.apiEndpoint}/search/?text=${value}`)
       .map(response => response.json())
       .map(data => data.items);
+  }
+
+  search(termsObservable: Observable<string>): Observable<Array<Contact>> {
+    return termsObservable
+      .debounceTime(500)
+      .distinctUntilChanged()
+      .map(terms => this.rawSearch(terms))
+      .switch();
   }
 }
