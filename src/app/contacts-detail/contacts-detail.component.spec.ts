@@ -3,8 +3,8 @@ import {async, ComponentFixture, TestBed} from "@angular/core/testing";
 import {ContactsDetailComponent} from "./contacts-detail.component";
 
 describe('ContactsDetailComponent', () => {
-  let component:ContactsDetailComponent;
-  let fixture:ComponentFixture<ContactsDetailComponent>;
+  let component: ContactsDetailComponent;
+  let fixture: ComponentFixture<ContactsDetailComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

@@ -3,8 +3,8 @@ import {async, ComponentFixture, TestBed} from "@angular/core/testing";
 import {ContactsEditorComponent} from "./contacts-editor.component";
 
 describe('ContactsEditorComponent', () => {
-  let component:ContactsEditorComponent;
-  let fixture:ComponentFixture<ContactsEditorComponent>;
+  let component: ContactsEditorComponent;
+  let fixture: ComponentFixture<ContactsEditorComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

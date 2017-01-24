@@ -13,6 +13,7 @@ import {API_ENDPOINT} from "./tokens";
 import {FormsModule} from "@angular/forms";
 import {ContactsEditorComponent} from "./contacts-editor/contacts-editor.component";
 import {ContactsDetailViewComponent} from "./contacts-detail-view/contacts-detail-view.component";
+import {EventBusService} from "./event-bus.service";
 
 @NgModule({
   declarations: [ContactsAppComponent, ContactsListComponent, ContactsDetailComponent, ContactsEditorComponent, ContactsDetailViewComponent],
@@ -26,6 +27,7 @@ import {ContactsDetailViewComponent} from "./contacts-detail-view/contacts-detai
   ],
   providers: [
     ContactsService,
+    EventBusService,
     {provide: API_ENDPOINT, useValue: "http://localhost:4201/api"},
   ],
   bootstrap: [ContactsAppComponent]
