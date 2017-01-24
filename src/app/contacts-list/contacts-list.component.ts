@@ -9,16 +9,20 @@ import {Observable} from "rxjs/Rx";
 })
 export class ContactsListComponent implements OnInit {
 
-  private contacts:Observable<Array<Contact>>;
+  private contacts: Observable<Array<Contact>>;
 
-  constructor(private contactService:ContactsService) {
+  constructor(private contactService: ContactsService) {
   }
 
-  ngOnInit():void {
+  ngOnInit(): void {
     this.contacts = this.contactService.getContacts();
   }
 
-  trackByContactId(index:number, contact:Contact) {
+  trackByContactId(index: number, contact: Contact) {
     return contact.id;
+  }
+
+  search(value: string): void {
+    this.contacts = this.contactService.search(value);
   }
 }
